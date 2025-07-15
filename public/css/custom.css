@@ -1,0 +1,297 @@
+/* Custom CSS für Discord Voice Viewer */
+@import url('https://rsms.me/inter/inter.css');
+
+/* Online-User-Tags Styling */
+.online-users-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+/* Vereinheitlichung der Abstände zwischen Light und Dark Mode */
+[data-bs-theme="light"] .online-users-tags,
+[data-bs-theme="dark"] .online-users-tags {
+    gap: 0.5rem;
+}
+
+.online-users-tags .tag {
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.5rem;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+    font-weight: 500;
+    background: transparent !important; /* Überschreibe Tabler-Standardstil */
+    box-sizing: border-box !important;
+    min-width: max-content !important;
+}
+
+.online-users-tags .tag:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 3px 5px rgba(0,0,0,0.15);
+}
+
+.online-users-tags .tag .avatar {
+    margin-right: 0.5rem;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid rgba(255,255,255,0.4);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    object-fit: cover;
+}
+
+/* Avatar-Rand im Dark Mode anpassen */
+[data-bs-theme="dark"] .online-users-tags .tag .avatar {
+    border: 2px solid rgba(0,0,0,0.5);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+}
+
+.card {
+  border: 1px solid var(--tblr-border-color);
+  box-shadow: rgba(35, 46, 60, 0.04) 0 2px 4px 0;
+  background-color: var(--tblr-card-bg, #fff);
+  margin-bottom: 1.5rem;
+}
+
+.online-users-tags .tag .badge {
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border-radius: 50%;
+    margin-left: 0.4rem;
+    box-shadow: 0 0 0 2px rgba(255,255,255,0.15);
+}
+
+/* Status-spezifische Stile - Light Mode */
+.online-users-tags .tag.tag-green {
+    background: linear-gradient(to right, rgba(66,200,138,0.2), rgba(66,200,138,0.3)) !important;
+    border: 1px solid rgba(66,200,138,0.5) !important;
+    border-left: 3px solid #42c88a !important;
+    color: #0d6e41 !important;
+}
+
+.online-users-tags .tag.tag-yellow {
+    background: linear-gradient(to right, rgba(255,193,7,0.2), rgba(255,193,7,0.3)) !important;
+    border: 1px solid rgba(255,193,7,0.5) !important;
+    border-left: 3px solid #ffc107 !important;
+    color: #876500 !important;
+}
+
+.online-users-tags .tag.tag-red {
+    background: linear-gradient(to right, rgba(220,53,69,0.2), rgba(220,53,69,0.3)) !important;
+    border: 1px solid rgba(220,53,69,0.5) !important;
+    border-left: 3px solid #dc3545 !important;
+    color: #8b1a28 !important;
+}
+:root {
+  --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+}
+
+/* Dark Mode Anpassungen */
+html[data-bs-theme="dark"] {
+  /* Gleiche Schriftart wie im Light Mode verwenden */
+  --tblr-font-sans-serif: 'Inter Var', -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+  --tblr-body-font-family: var(--tblr-font-sans-serif);
+  --tblr-heading-font-family: var(--tblr-font-sans-serif);
+  
+  /* Card-Hintergrund im Dark Mode explizit setzen */
+  --tblr-card-bg: var(--tblr-bg-surface, #1a2234);
+}
+
+/* Explizite Regeln für Cards im Dark Mode */
+[data-bs-theme="dark"] .card {
+  background-color: #1a2234 !important;
+  color: var(--tblr-body-color);
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme="dark"] .card-header {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .card-body {
+  background-color: transparent !important;
+}
+
+[data-bs-theme="dark"] .bg-light {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Tags und Umrandungen im Dark Mode */
+[data-bs-theme="dark"] .tag,
+[data-bs-theme="dark"] .list-group-item,
+[data-bs-theme="dark"] .list-group-header {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-bs-theme="dark"] .list-group-item {
+  background-color: transparent !important;
+}
+
+[data-bs-theme="dark"] .list-group-header {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-bs-theme="dark"] .online-users-tags .tag {
+  background-color: rgba(0, 0, 0, 0.2) !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+
+/* Status-spezifische Stile - Dark Mode */
+[data-bs-theme="dark"] .online-users-tags .tag.tag-green {
+  background: linear-gradient(to right, rgba(66, 200, 138, 0.2), rgba(66, 200, 138, 0.3)) !important;
+  border: 1px solid rgba(66, 200, 138, 0.4) !important;
+  border-left: 3px solid #42c88a !important;
+  color: #7ae0b9 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-bs-theme="dark"] .online-users-tags .tag.tag-yellow {
+  background: linear-gradient(to right, rgba(255, 193, 7, 0.2), rgba(255, 193, 7, 0.3)) !important;
+  border: 1px solid rgba(255, 193, 7, 0.4) !important;
+  border-left: 3px solid #ffc107 !important;
+  color: #ffe066 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+[data-bs-theme="dark"] .online-users-tags .tag.tag-red {
+  background: linear-gradient(to right, rgba(220, 53, 69, 0.2), rgba(220, 53, 69, 0.3)) !important;
+  border: 1px solid rgba(220, 53, 69, 0.4) !important;
+  border-left: 3px solid #dc3545 !important;
+  color: #f27d89 !important;
+  font-weight: 600 !important;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Custom CSS für Tags mit Avatar */
+.tags-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-bottom: 0;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  background: var(--tblr-bg-surface);
+  border: 1px solid var(--tblr-border-color);
+  border-radius: 4px;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.tag-avatar {
+  margin-right: 0.5rem;
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+
+.btn-close {
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  opacity: 0.5;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  width: 0.75rem;
+  height: 0.75rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-close:hover {
+  opacity: 0.75;
+}
+
+/* Voice-Channel Styling */
+.voice-status-icon {
+    font-size: 1.25rem;
+    margin-left: 0.5rem;
+}
+
+/* Voice-Channel Container Styling */
+.list-group-item {
+    transition: all 0.2s ease;
+    border-left: 3px solid transparent;
+}
+
+.list-group-item:hover {
+    background: linear-gradient(to right, rgba(88, 101, 242, 0.1), transparent 60%);
+    border-left-color: #5865f2;
+}
+
+/* Voice-Channel Header Styling */
+.list-group-header {
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    color: var(--tblr-body-color);
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid var(--tblr-border-color);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Badge Status Styling */
+.badge-status {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 10px;
+    height: 10px;
+    padding: 0;
+    border-radius: 50%;
+    border: 2px solid var(--tblr-bg-surface);
+}
+
+/* Special Color for Twitch Streaming */
+.text-twitch {
+    color: #9146FF;
+}
+
+/* Voice-Channel List Item Body */
+.list-group-item-body {
+    padding-left: 2.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    padding-top: 0.5rem;
+}
+
+/* Hover effect for user rows */
+.list-group-item-body > div:hover {
+    background-color: rgba(0, 0, 0, 0.02);
+    border-radius: 4px;
+}
+
+/* Status icons styling */
+.ti-microphone-off, .ti-headphones-off {
+    opacity: 0.8;
+}
+
+.ti-video, .ti-video-plus {
+    opacity: 0.9;
+}
+
+.ti-hand-stop {
+    color: #fd7e14;
+}
+
+/* Spotify and activity styling */
+.ti-brand-spotify {
+    color: #1DB954;
+}
+
+.ti-device-gamepad {
+    color: #5865f2;
+}

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{{#if pageTitle}}{{pageTitle}} - {{/if}}Discord Web Viewer</title>
+    
+    <!-- Prevent FOUC (Flash of Unstyled Content) for theme -->
+    <script>
+      (function() {
+        try {
+          const savedTheme = localStorage.getItem('theme');
+          const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const serverTheme = 'auto';
+          
+          let effectiveTheme = serverTheme;
+          if (savedTheme) {
+            effectiveTheme = savedTheme;
+          } else if (serverTheme === 'auto') {
+            effectiveTheme = systemPrefersDark ? 'dark' : 'light';
+          }
+          
+          if (effectiveTheme === 'dark') {
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+          } else {
+            document.documentElement.setAttribute('data-bs-theme', 'light');
+          }
+        } catch(e) {
+          // Fallback to light theme if anything goes wrong
+          document.documentElement.setAttribute('data-bs-theme', 'light');
+        }
+      })();
+    </script>
+    
+    <!-- Meta Tags -->
+    <meta name="msapplication-TileColor" content="#5865F2">
+    <meta name="theme-color" content="#5865F2">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="description" content="Discord-Server mit {{serverInfo.memberCount}} Mitgliedern. Live-Ansicht der Voice-Channels.">
+    <meta name="author" content="Discord Web Viewer">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:image" content="{{serverInfo.icon}}">
+    <meta property="og:image:width" content="1280">
+    <meta property="og:image:height" content="640">
+    <meta property="og:site_name" content="Discord Web Viewer">
+    <meta property="og:type" content="object">
+    <meta property="og:title" content="{{#if pageTitle}}{{pageTitle}} - {{/if}}{{serverInfo.name}}">
+    <meta property="og:url" content="{{serverInfo.icon}}">
+    <meta property="og:description" content="Discord-Server mit {{serverInfo.memberCount}} Mitgliedern. Live-Ansicht der Voice-Channels.">
+    
+    <!-- Global Mandatory Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/core@1.0.0-beta17/dist/css/tabler.min.css" rel="stylesheet">
+    
+    <!-- Plugin Styles -->
+    <link href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link href="/css/custom.css" rel="stylesheet">
+    
+    <!-- Custom Font -->
+    <style>
+      @import url("https://rsms.me/inter/inter.css");
+    </style>
+  </head>
+  <body>
+    <!-- Keine zusätzlichen Theme-Skripte nötig, da wir data-bs-theme="auto" verwenden -->
+    
+    <div class="page">
+      <div class="page-wrapper">
+        <!-- Page header -->
+        <div class="page-header d-print-none">
+          <div class="container-xl">
+            <div class="row g-2 align-items-center">
+              <div class="col">
+                <div class="page-pretitle">
+
+                </div>
+                <h2 class="page-title">
+
+                </h2>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Page body -->
+        <div class="page-body">
+          <div class="container-xl">
+            {{{body}}}
+          </div>
+        </div>
+        
+        <!-- Footer -->
+        <footer class="footer footer-transparent d-print-none">
+          <div class="container-xl">
+            <div class="row text-center align-items-center flex-row-reverse">
+              <div class="col-lg-auto ms-lg-auto">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item"><a href="https://github.com/revunix/Discord-Web-Viewer/" target="_blank" class="link-secondary" rel="noopener">GitHub</a></li>
+                  <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank" class="link-secondary" rel="noopener">Powered by Tabler</a></li>
+                </ul>
+              </div>
+              <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                <ul class="list-inline list-inline-dots mb-0">
+                  <li class="list-inline-item">
+                    <a href="https://github.com/revunix" target="_blank" class="link-secondary" rel="noopener">revunix</a> | Discord Web Viewer &copy; 2025
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    
+    <!-- Theme Switcher -->    
+    <div class="theme-switcher dropdown position-fixed bottom-0 end-0 mb-3 me-3">
+      <button class="btn btn-primary dropdown-toggle" type="button" id="theme-switcher-btn" data-bs-toggle="dropdown" aria-expanded="false">
+        <i class="ti ti-sun"></i>
+        <span id="current-theme-text">Auto</span>
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="theme-switcher-btn">
+        <li><a class="dropdown-item theme-option" href="#" data-theme="auto">Auto</a></li>
+        <li><a class="dropdown-item theme-option" href="#" data-theme="light">Hell</a></li>
+        <li><a class="dropdown-item theme-option" href="#" data-theme="dark">Dunkel</a></li>
+      </ul>
+    </div>
+
+    <!-- JavaScript -->    
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/js/tabler.min.js"></script>
+    <script src="/js/theme.js"></script>
+    <script src="/js/refresh.js"></script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<div class="list-group-item">
+  <div class="row align-items-center">
+    <div class="col-auto">
+      {{#if this.isEmpty}}
+        <i class="ti ti-volume-3 text-muted"></i>
+      {{else}}
+        <i class="ti ti-volume text-primary"></i>
+      {{/if}}
+    </div>
+    <div class="col">
+      <div class="{{#if this.isEmpty}}text-muted{{/if}}">{{this.name}}</div>
+    </div>
+  </div>
+  {{#unless this.isEmpty}}
+    <ul class="list-unstyled mt-3 ps-5">
+      {{#each this.users}}
+        <li class="d-flex align-items-center mb-3">
+          <span class="avatar avatar-sm me-3 rounded-circle" style="background-image: url({{this.avatar}})">
+            <span class="badge
+              {{#if (eq this.status 'online')}}bg-green{{/if}}
+              {{#if (eq this.status 'idle')}}bg-yellow{{/if}}
+              {{#if (eq this.status 'dnd')}}bg-red{{/if}}
+            "></span>
+          </span>
+          <div class="flex-fill">
+            <div>{{this.username}}</div>
+            {{#if this.spotify}}
+              <div class="d-flex align-items-center mt-1">
+                <img src="{{this.spotify.coverUrl}}" alt="{{this.spotify.album}}" class="avatar avatar-sm me-2 rounded">
+                <div class="text-muted small lh-sm">
+                  <div><strong>{{this.spotify.song}}</strong></div>
+                  <div>von {{this.spotify.artist}}</div>
+                </div>
+              </div>
+            {{else if this.activity}}
+              <div class="text-muted small fst-italic">
+                Spielt: {{this.activity}}
+              </div>
+            {{/if}}
+          </div>
+          <div class="ms-auto">
+            {{#if this.isStreaming}}<i class="ti ti-video voice-status-icon text-danger" title="Streamt"></i>{{/if}}
+            {{#if this.isMuted}}<i class="ti ti-microphone-off voice-status-icon text-muted" title="Stummgeschaltet"></i>{{/if}}
+            {{#if this.isDeafened}}<i class="ti ti-volume-off voice-status-icon text-muted" title="Taub"></i>{{/if}}
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{/unless}}
+</div>
