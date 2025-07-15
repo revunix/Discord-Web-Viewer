@@ -80,10 +80,10 @@ Die Anwendung unterstützt automatisch Light und Dark Mode basierend auf den Sys
 ## 📱 Screenshots
 
 ### Dark Mode
-![Dark Mode](https://via.placeholder.com/800x400/1a2234/ffffff?text=Dark+Mode+Screenshot)
+![Dark Mode](https://github.com/revunix/Discord-Web-Viewer/blob/63ac1ecbc1cf58704cc6ec40cc69ddb7a41b767c/screenshot/dark.png)
 
 ### Light Mode
-![Light Mode](https://via.placeholder.com/800x400/ffffff/1a2234?text=Light+Mode+Screenshot)
+![Light Mode](https://github.com/revunix/Discord-Web-Viewer/blob/63ac1ecbc1cf58704cc6ec40cc69ddb7a41b767c/screenshot/light.png)
 
 ## 📄 Lizenz
 
